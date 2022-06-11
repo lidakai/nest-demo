@@ -4,9 +4,11 @@ import { AppService } from './app.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './common/logging.interceptor';
 import { TimeoutInterceptor } from './common/timeout.interceptor';
+import { MqttModule } from './mqtt/mqtt.module';
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [],
+  imports: [MqttModule, UserModule],
   controllers: [AppController],
   providers: [
     AppService,

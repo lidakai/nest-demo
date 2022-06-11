@@ -3,8 +3,10 @@ import { UserAddDto } from './user.types';
 
 @Injectable()
 export class UserService {
-  listUsers(pageNo: number, pageSize: number): string {
-    return 'Hello World!';
+  listUsers(pageNo = 1, pageSize = 10): string[] {
+    return Array(10)
+      .fill(0)
+      .map((_, i) => `user-${i}-${Math.random() * 100}`);
   }
 
   addUser(user: UserAddDto): string {
