@@ -1,4 +1,13 @@
 {
     "editor.formatOnType": true,
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "fileheader.configObj": {
+        "autoAdd": false, // 默认开启
+        "annotationStr": {
+            "head": "/*", // 自定义注释头部
+            "middle": " * @", // 自定义注释中间部分(注意空格,这也是最终生成注释的一部分)
+            "end": " */", // 自定义注释尾部
+            "use": false // 是否使用自定义注释符号
+        }
+    }
 }
