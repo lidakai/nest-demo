@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { BusinessExceptionFilter } from './Common/business-exception.filter';
-import { TransformInterceptor } from './Common/result.interceptor';
-import { WsAdapter } from './Gateway/ws.adapter';
+import { BusinessExceptionFilter } from './common/business-exception.filter';
+import { TransformInterceptor } from './common/result.interceptor';
+import { WsAdapter } from './gateway/ws.adapter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
