@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserAddDto } from './user.types';
-import { Param } from '../common/param';
+import { Param } from '../Common/param';
 
 @Controller('api/user')
 export class UserController {

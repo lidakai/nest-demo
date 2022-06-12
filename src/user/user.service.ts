@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { ApiErrorCode } from 'src/common/api-error-code.enum';
-import { ApiException } from 'src/common/api.exception';
+import { ApiErrorCode } from 'src/Common/api-error-code.enum';
+import { ApiException } from 'src/Common/api.exception';
 import { UserAddDto } from './user.types';
 
 @Injectable()
