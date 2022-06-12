@@ -5,7 +5,7 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './Common/logging.interceptor';
 import { TimeoutInterceptor } from './Common/timeout.interceptor';
 import { UserModule } from './user/user.module';
-import { WsStartGateway } from './Gateway/ws.gateway';
+import { WsStartGateway } from './Ws/ws.gateway';
 
 @Module({
   imports: [UserModule],
