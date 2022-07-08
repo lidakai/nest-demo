@@ -14,7 +14,9 @@ export class UserController {
   }
 
   @Get('list')
-  async listUsers(@Query() pageNo: number, @Query() pageSize: number) {
+  async listUsers(
+    @Query() { pageNo, pageSize }: { pageNo: number; pageSize: number },
+  ) {
     console.log(pageNo, pageSize, 'list');
     return this.userService.listUsers(pageNo, pageSize);
   }
