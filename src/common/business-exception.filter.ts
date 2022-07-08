@@ -6,6 +6,8 @@ import {
 } from '@nestjs/common';
 import { BusinessException } from './business.exception';
 import { ApiException } from './api.exception';
+import * as dayjs from 'dayjs';
+
 /**
  * 业务异常统一处理
  */
@@ -18,7 +20,7 @@ export class BusinessExceptionFilter implements ExceptionFilter {
       response.json({
         code: exception.getErrorCode(),
         message: exception.getErrorMessage(),
-        date: new Date().toLocaleDateString(),
+        date: dayjs().format(),
       });
     } else {
       response.json({

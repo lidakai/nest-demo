@@ -3,8 +3,12 @@ import { AppModule } from './app.module';
 import { BusinessExceptionFilter } from './common/business-exception.filter';
 import { TransformInterceptor } from './common/result.interceptor';
 import { WsAdapter } from './gateway/socket.adapter';
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/zh-cn'; // import locale
 
 async function bootstrap() {
+  dayjs.locale('zh-cn'); // use locale
+
   const app = await NestFactory.create(AppModule);
   // 注册为全局filter
   app.useGlobalFilters(new BusinessExceptionFilter());

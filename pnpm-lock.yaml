@@ -20,6 +20,7 @@ specifiers:
   conventional-changelog: ^3.1.25
   conventional-changelog-cli: ^2.2.2
   cz-conventional-changelog-zh: 0.0.2
+  dayjs: ^1.11.3
   eslint: ^8.0.1
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^4.0.0
@@ -49,6 +50,7 @@ dependencies:
   '@nestjs/typeorm': 8.1.2_gdtrraywlpbnswrihph2jks6ty
   '@nestjs/websockets': 8.4.6_6a7csugkuqc2e66avgu3rijc4a
   cz-conventional-changelog-zh: 0.0.2
+  dayjs: 1.11.3
   mqtt: 4.3.7
   mysql: 2.18.1
   reflect-metadata: 0.1.13
@@ -2514,6 +2516,10 @@ packages:
   /dateformat/3.0.3:
     resolution: {integrity: sha512-jyCETtSl3VMZMWeRo7iY1FL19ges1t55hMo5yaam4Jrsm5EPL89UQkoQRyiI+Yf4k8r2ZpdngkV8hr1lIdjb3Q==}
     dev: true
+
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}

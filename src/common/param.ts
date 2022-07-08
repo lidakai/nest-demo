@@ -1,6 +1,9 @@
-import { createParamDecorator } from '@nestjs/common';
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
-export const Param = createParamDecorator((data, req) => {
-  const param = { ...req.query, ...req.body, ...req.param };
-  return data ? param[data] : param;
-});
+export const Param = createParamDecorator(
+  (data: string, ctx: ExecutionContext) => {
+    const request = ctx.switchToHttp().getRequest();
+    const param = { ...request.query, ...request.body, ...request.param };
+    return data ? param[data] : param;
+  },
+);
