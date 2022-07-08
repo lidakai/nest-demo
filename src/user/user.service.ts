@@ -12,7 +12,7 @@ export class UserService {
       .map((_, i) => `user-${i}-${Math.random() * 100}`);
   }
 
-  addUser(user: UserAddDto): UserAddDto {
+  addUser(user: any): UserAddDto {
     console.log(user, 'user');
     // return 'hello world';
     if (user && user.name) {

@@ -8,8 +8,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('add')
-  async addUser(@Body() user: UserAddDto) {
-    return this.userService.addUser(user);
+  async addUser(@Body() user: UserAddDto, @Param('pageNo') pageNo = 1) {
+    return this.userService.addUser({ ...user, pageNo });
   }
 
   @Get('list')
