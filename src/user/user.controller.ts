@@ -9,6 +9,7 @@ export class UserController {
 
   @Post('add')
   async addUser(@Body() user: UserAddDto, @Param('pageNo') pageNo = 1) {
+    console.log(pageNo, user, 'user');
     return this.userService.addUser({ ...user, pageNo });
   }
 
@@ -17,6 +18,7 @@ export class UserController {
     @Param('pageNo') pageNo = 1,
     @Param('pageSize') pageSize = 20,
   ) {
+    console.log(pageNo, pageSize, 'list');
     return this.userService.listUsers(pageNo, pageSize);
   }
 }
