@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserAddDto } from './user.types';
 import { Param } from '../common/param';
@@ -8,16 +8,13 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('add')
-  async addUser(@Body() user: UserAddDto, @Param('pageNo') pageNo = 1) {
+  async addUser(@Body() user: UserAddDto, @Query() pageNo: number) {
     console.log(pageNo, user, 'user');
     return this.userService.addUser({ ...user, pageNo });
   }
 
   @Get('list')
-  async listUsers(
-    @Param('pageNo') pageNo = 1,
-    @Param('pageSize') pageSize = 20,
-  ) {
+  async listUsers(@Query() pageNo: number, @Query() pageSize: number) {
     console.log(pageNo, pageSize, 'list');
     return this.userService.listUsers(pageNo, pageSize);
   }
