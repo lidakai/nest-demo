@@ -6,10 +6,9 @@ import { UserAddDto } from './user.types';
 @Injectable()
 export class UserService {
   listUsers(pageNo = 1, pageSize = 10): string[] {
-    console.log(pageNo, pageSize);
-    return Array(10)
+    return Array(pageSize)
       .fill(0)
-      .map((_, i) => `user-${i}-${Math.random() * 100}`);
+      .map((_, i) => `user-${pageNo}-${i}-${Math.random() * 100}`);
   }
 
   addUser(user: any): UserAddDto {
