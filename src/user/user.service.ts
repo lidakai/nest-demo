@@ -12,11 +12,14 @@ export class UserService {
       .map((_, i) => `user-${i}-${Math.random() * 100}`);
   }
 
-  addUser(user: UserAddDto): string {
-    console.log(user);
+  addUser(user: UserAddDto): UserAddDto {
+    console.log(user, 'user');
     // return 'hello world';
+    if (user && user.name) {
+      return user;
+    }
     throw new ApiException(
-      '用户ID无效123',
+      '用户名不存在',
       ApiErrorCode.USER_ID_INVALID,
       HttpStatus.UNAUTHORIZED,
     );
