@@ -13,6 +13,7 @@ export interface UserPo {
 export interface UserAddDto {
   name: string;
   gender?: Gender;
+  pageNo?: string; // query
   desc?: string;
 }
 /**

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Header, Headers, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserAddDto } from './user.types';
 import { Param } from '../common/param';
@@ -8,8 +8,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('add')
-  async addUser(@Body() user: UserAddDto, @Param('pageNo') pageNo = 1) {
-    return this.userService.addUser({ ...user, pageNo });
+  async addUser(@Param() user: UserAddDto, @Headers('token') header?: string) {
+    return this.userService.addUser(Object.assign(user, { token: header }));
   }
 
   @Get('list')
