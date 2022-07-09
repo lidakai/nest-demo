@@ -11,10 +11,9 @@ export interface UserPo {
  * 新建用户传输对象
  */
 export interface UserAddDto {
-  name: string;
-  gender?: Gender;
-  pageNo?: string; // query
-  desc?: string;
+  firstName: string;
+  lastName: string;
+  age: number;
 }
 /**
  * 性别

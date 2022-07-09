@@ -6,9 +6,10 @@ import { LoggingInterceptor } from './common/logging.interceptor';
 import { TimeoutInterceptor } from './common/timeout.interceptor';
 import { UserModule } from './user/user.module';
 import { WsStartGateway } from './socket/ws.gateway';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { database } from '../config/defaultDabaBase';
 @Module({
-  imports: [UserModule],
+  imports: [UserModule, TypeOrmModule.forRoot(database)],
   controllers: [AppController],
   providers: [
     AppService,
