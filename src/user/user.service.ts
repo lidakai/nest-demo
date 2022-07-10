@@ -4,15 +4,17 @@ import { ApiException } from 'src/common/api.exception';
 import { UserAddDto } from './user.types';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
+import { UserEntity } from '../entitys/user.entity';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(UserEntity)
+    private usersRepository: Repository<UserEntity>,
   ) {}
 
-  findAll(): Promise<User[]> {
+  findAll(pageNo: string, pageSize: string): Promise<UserEntity[]> {
+    console.log(pageNo, pageSize, '123');
     return this.usersRepository.find();
   }
 

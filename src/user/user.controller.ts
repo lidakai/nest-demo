@@ -14,10 +14,10 @@ export class UserController {
 
   @Get('list')
   async listUsers(
-    @Param('pageNo') pageNo = 1,
-    @Param('pageSize') pageSize = 20,
+    @Param('pageNo') pageNo = '1',
+    @Param('pageSize') pageSize = '20',
   ) {
-    const result = await this.userService.findAll();
-    console.log(pageNo, pageSize, result);
+    const result = await this.userService.findAll(pageNo, pageSize);
+    return result;
   }
 }
