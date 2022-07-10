@@ -13,4 +13,7 @@ export class UserEntity {
 
   @Column('int', { name: 'age' })
   age: number;
+
+  @Column('varchar', { name: 'createTime', length: 255 })
+  createTime: string;
 }

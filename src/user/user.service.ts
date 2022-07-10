@@ -4,7 +4,8 @@ import { ApiException } from 'src/common/api.exception';
 import { UserAddDto } from './user.types';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserEntity } from '../entitys/user.entity';
+import { UserEntity } from '../entitys/user';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class UserService {
@@ -13,9 +14,13 @@ export class UserService {
     private usersRepository: Repository<UserEntity>,
   ) {}
 
-  findAll(pageNo: string, pageSize: string): Promise<UserEntity[]> {
-    console.log(pageNo, pageSize, '123');
-    return this.usersRepository.find();
+  findAll(pageNo: number, pageSize: number) {
+    return this.usersRepository
+      .createQueryBuilder('user')
+      .orderBy('user.createTime', 'DESC')
+      .skip((pageNo - 1) * pageSize)
+      .take(pageSize)
+      .getMany();
   }
 
   find(firstName: string): Promise<UserAddDto> {
@@ -26,7 +31,10 @@ export class UserService {
     if (user && user.firstName) {
       const findResult = await this.find(user.firstName);
       if (!findResult) {
-        const result = await this.usersRepository.save(user);
+        const result = await this.usersRepository.save({
+          ...user,
+          createTime: dayjs().format(),
+        });
         return result;
       }
     }

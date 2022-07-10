@@ -1,4 +1,4 @@
-import { UserEntity } from '../src/entitys/user.entity';
+import { UserEntity } from '../src/entitys/user';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const base: TypeOrmModuleOptions = {
@@ -9,5 +9,6 @@ export const base: TypeOrmModuleOptions = {
   password: 'Pw#1234#',
   database: 'nest_test',
   entities: [UserEntity],
+  logging: false,
   synchronize: true,
 };
