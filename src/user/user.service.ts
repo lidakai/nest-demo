@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { ApiErrorCode } from 'src/common/api-error-code.enum';
+import { ApiErrorCode } from 'src/constants/api-error-code.enum';
 import { ApiException } from 'src/common/api.exception';
-import { UserAddDto } from './user.types';
+import { UserAdd } from './user.types';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UserEntity } from '../entitys/user';
@@ -23,11 +23,12 @@ export class UserService {
       .getMany();
   }
 
-  find(firstName: string): Promise<UserAddDto> {
+  find(firstName: string): Promise<UserAdd> {
     return this.usersRepository.findOne({ where: { firstName } });
   }
 
-  async addUser(user: UserAddDto): Promise<UserAddDto> {
+  async addUser(user: UserAdd): Promise<UserAdd> {
+    let msg = '参数异常';
     if (user && user.firstName) {
       const findResult = await this.find(user.firstName);
       if (!findResult) {
@@ -37,9 +38,10 @@ export class UserService {
         });
         return result;
       }
+      msg = 'firstName 已存在';
     }
     throw new ApiException(
-      'firstName 已存在',
+      msg,
       ApiErrorCode.USER_ID_INVALID,
       HttpStatus.UNAUTHORIZED,
     );

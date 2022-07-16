@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ApiErrorCode } from '../constants/api-error-code.enum';
 interface Response<T> {
   data: T;
 }
@@ -21,7 +22,7 @@ export class TransformInterceptor<T>
       map((data) => {
         return {
           data,
-          code: 0,
+          code: ApiErrorCode.SUCCESS,
           message: '请求成功',
         };
       }),
