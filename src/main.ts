@@ -23,7 +23,7 @@ async function bootstrap() {
   app.useGlobalFilters(new BusinessExceptionFilter());
 
   app.useWebSocketAdapter(new WsAdapter(app)); // 使用我们的适配器
-
+  app.enableCors(); // 允许跨域
   await app.listen(3000, () => {
     console.log('Server is running on port 3000');
   });
