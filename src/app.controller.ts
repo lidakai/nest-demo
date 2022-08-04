@@ -70,6 +70,11 @@ export class AppController {
     return DATA.filter((d, i) => i < this.count);
   }
 
+  @Get('/randomNumber')
+  randomNumber(): number {
+    return Math.random() * 1000;
+  }
+
   @Get('/favicon.ico')
   getIco() {
     return 'http://oss.wanfengblog.com/FuUTgnwXeVkXKVmzRSSr6MM94kRz';
