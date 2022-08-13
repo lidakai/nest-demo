@@ -1,6 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import axios from 'axios';
 
 const DATA = [
   {
@@ -75,13 +74,6 @@ export class AppController {
   @Get('/randomNumber')
   randomNumber(): number {
     return Math.random() * 1000;
-  }
-
-  @Post('/getApiRedirect')
-  async getApiRedirect(@Body() { link }: { link: string }): Promise<string> {
-    return await axios.get(link).then(function (response) {
-      return response.request.res.responseUrl;
-    });
   }
 
   @Get('/favicon.ico')

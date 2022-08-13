@@ -7,9 +7,10 @@ import { TimeoutInterceptor } from './common/timeout.interceptor';
 import { WsStartGateway } from './socket/ws.gateway';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
+import { DouyinModule } from './douyin/douyin.module';
 import { base } from '../config/ormconfig';
 @Module({
-  imports: [UserModule, TypeOrmModule.forRoot(base)],
+  imports: [UserModule, TypeOrmModule.forRoot(base), DouyinModule],
   controllers: [AppController],
   providers: [
     AppService,
