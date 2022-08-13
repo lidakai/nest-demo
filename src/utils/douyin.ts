@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { ApiException } from 'src/common/api.exception';
+import { ApiErrorCode } from 'src/constants/api-error-code.enum';
 
 export async function douyinData(url: string): Promise<string> {
   const _url = new URL(url);
@@ -8,11 +10,8 @@ export async function douyinData(url: string): Promise<string> {
   if (dataUrl) {
     const { data } = await axios.get(dataUrl);
     if (Array.isArray(data.item_list) && data.item_list.length) {
-      const originVideo = data
-        ? data['item_list'][0]['video']['play_addr']['url_list'][0]
-        : '';
-      return originVideo ? originVideo.replace('playwm', 'play') : originVideo;
+      return data;
     }
+    throw new ApiException('视频不存在', ApiErrorCode.TIMEOUT);
   }
-  return '';
 }
